@@ -15,3 +15,29 @@ parents.forEach(parent => {
   });
 });
 
+const cards = document.querySelectorAll('.client_videos-card');
+
+        cards.forEach((card) => {
+            card.addEventListener('mouseenter', () => {
+                cards.forEach((otherCard) => {
+                    if (otherCard !== card) {
+                        otherCard.classList.add('client-video-ovelay');
+                        otherCard.querySelector('.client_video-button-wrap').style.display = 'none';
+                        otherCard.querySelector('.client-videos-author-wrap').style.display = 'none';
+                    }
+                });
+                card.classList.add('hovered');
+            });
+
+            card.addEventListener('mouseleave', () => {
+                cards.forEach((otherCard) => {
+                    otherCard.classList.remove('client-video-ovelay');
+                    otherCard.querySelector('.client-videos-author-wrap').style.display = 'block';
+                    otherCard.querySelector('.client_video-button-wrap').style.display = 'flex';
+                });
+                card.classList.remove('hovered');
+            });
+        });
+
+
+     
